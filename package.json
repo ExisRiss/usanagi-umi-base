@@ -1,7 +1,7 @@
 {
   "name": "usanagi-umi-base",
   "version": "1.0.0",
-  "description": "Base bot WhatsApp (Baileys v7) yang bisa dikembangkan siapa saja \u2014 satu base socket untuk bot utama, jadibot, dan mode single; rich message; server game multiplayer.",
+  "description": "Base bot WhatsApp (Baileys v7) yang bisa dikembangkan siapa saja — satu base socket untuk bot utama, jadibot, dan mode single; rich message; server game multiplayer.",
   "type": "module",
   "main": "index.js",
   "license": "MIT",
@@ -27,7 +27,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@itsliaaa/baileys": "^0.5.1",
-    "@whiskeysockets/baileys": "npm:@itsliaaa/baileys@^0.5.1",
+    "@sairidev/baileys-new": "github:ExisRiss/baileys-new#7bb1fc0cc59d8f9bd88581bb03d46a27afbeaa0c",
     "pino": "^9.5.0",
     "qrcode-terminal": "^0.12.0",
     "ws": "^8.18.0"

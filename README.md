@@ -116,22 +116,35 @@ pull request. **Pull request yang membuat `npm test` merah tidak akan diterima.*
 
 ## 5. Soal library koneksi (penting)
 
-`package.json` memakai alias npm:
+`package.json` memakai fork Baileys v7 **dari GitHub** (commit dikunci):
 
 ```json
-"@whiskeysockets/baileys": "npm:@itsliaaa/baileys@^0.5.1"
+"@sairidev/baileys-new": "github:ExisRiss/baileys-new#7bb1fc0cc59d8f9bd88581bb03d46a27afbeaa0c"
 ```
 
-Artinya: seluruh kode tetap mengimpor `@whiskeysockets/baileys`, tetapi yang
-terpasang adalah fork `@itsliaaa/baileys` (Baileys v7 aktif).
+Fork ini adalah `@sairidev/baileys-new` yang **diperbaiki** — paket npm aslinya
+sudah dicabut dan build GitHub aslinya gagal diimpor. Perbaikannya:
+
+1. `DONATE_URL` didaftarkan di `Defaults/index.js` (sebelumnya diimpor dua
+   berkas tetapi tidak pernah dideklarasikan → **seluruh paket gagal diimpor**);
+2. `forwardedAiBotMessageInfo.botJid` **dinamis** dari koneksi aktif — bukan
+   literal `867051314767696@bot` lagi;
+3. `console.clear()` + banner promosi dibuang dari `lib/index.js`.
+
+> Alias `npm:` **tidak bisa** dipakai untuk dependensi Git
+> (`npm error aliases only work for registry deps`), karena itu dependensi
+> memakai nama asli `@sairidev/baileys-new`.
+
+Mau ganti library? Ubah dependensi di `package.json` lalu sesuaikan
+`lib/baileys.js`. Tidak ada berkas lain yang perlu disentuh.
 
 **Jangan pasang paket-paket ini** (sudah diverifikasi):
 
 | paket | status |
 |---|---|
 | `@yudzxml/baileys` | **MALICIOUS** (OSV MAL-2026-17846) — nama sekarang holding package `0.0.1-security` |
-| `@sairidev/baileys-new` | dicabut npm → holding package `0.0.1-security`; build GitHub-nya **rusak** (`DONATE_URL` tidak diekspor `Defaults/index.js`) |
-| `@rexxhayanasi/elaina-baileys` | dipakai versi lama proyek ini; sudah diganti (lihat `lib/baileys.js`) |
+| `@sairidev/baileys-new` **dari npm** | dicabut → stub `0.0.1-security`; build GitHub aslinya juga rusak (`DONATE_URL`) — pakai fork di repo ini |
+| `@rexxhayanasi/elaina-baileys` | dipakai versi lama proyek ini; sudah diganti |
 
 Ingin mengganti library? Ubah **satu baris** di `package.json`, lalu sesuaikan
 `lib/baileys.js`. Tidak ada berkas lain yang perlu disentuh.
