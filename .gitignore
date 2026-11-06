@@ -1,0 +1,27 @@
+# Runtime & rahasia — JANGAN pernah di-commit
+node_modules/
+sessions/
+data/
+config.js
+.env
+.env.*
+!.env.example
+*.log
+cookies.txt
+tmp/
+*.session
+*.zip
+
+# Hasil build / cache
+dist/
+build/
+coverage/
+.cache/
+.nyc_output/
+
+# OS & editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
