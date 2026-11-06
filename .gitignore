@@ -2,7 +2,7 @@
 node_modules/
 sessions/
 data/
-config.js
+/config.js
 .env
 .env.*
 !.env.example
